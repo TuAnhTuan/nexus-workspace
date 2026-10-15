@@ -6,9 +6,10 @@
 .vscode/
 !frontend/.vscode/extensions.json
 
-# Claude Code — personal/local files
-.claude/settings.local.json
-.claude/logs/
+# Claude Code — kept local only
+.claude/
+CLAUDE.md
+MEMORY.md
 
 # Build output / deps (also covered by sub-project .gitignore files)
 node_modules/

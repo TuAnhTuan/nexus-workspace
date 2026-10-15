@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+app:
+  # "Today" depends on where the user is, not on the server's clock zone.
+  # Used by the recommendation rules (overdue / end of day).
+  timezone: Asia/Ho_Chi_Minh
+
+spring:
+  application:
+    name: todo-app
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tododb
+    username: todo
+    password: todo
+    driver-class-name: org.postgresql.Driver
+
+  flyway:
+    # The dev DB already has a `tasks` table (created by Hibernate in Phase 1) but no Flyway history.
+    # baseline-on-migrate marks that existing schema as version 1, so Flyway skips V1 and only runs V2+.
+    # On an empty DB there's nothing to baseline, so V1, V2... all run normally.
+    baseline-on-migrate: true
+    baseline-version: 1
+
+  jpa:
+    hibernate:
+      # Flyway owns the schema now. validate = Hibernate only checks that entities match the tables
+      # and fails fast on startup if they don't (e.g. a migration was forgotten).
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false

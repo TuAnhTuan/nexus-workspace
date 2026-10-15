@@ -1,0 +1,159 @@
+/*
+ * Global styles only: design tokens (colors, radius, font) + element defaults.
+ * Component layout lives in each component's <style scoped>.
+ * Palette follows the soft pastel look of the reference design; dark theme swaps the same tokens.
+ */
+:root {
+  --font: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --page-bg: #f3e6d8;
+  --app-bg: #f7f7fb;
+  --surface: #ffffff;
+  --surface-2: #f1f2f7;
+  --text: #1d1f2c;
+  --muted: #7a7f93;
+  --border: #e7e8ef;
+
+  --primary: #6f8ef5;
+  --primary-soft: #e6ecfe;
+  --primary-text: #ffffff;
+  --done: #3fb37f;
+  --done-soft: #e2f6ec;
+  --todo: #6f8ef5;
+  --todo-soft: #e6ecfe;
+  --warn: #e98a2f;
+  --warn-soft: #fdf0e2;
+  --danger: #e5484d;
+  --danger-soft: #fdeceb;
+  --accent-pink: #f6dce9;
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 2px rgb(20 22 40 / 0.04), 0 8px 24px rgb(20 22 40 / 0.06);
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --page-bg: #101116;
+  --app-bg: #16171e;
+  --surface: #1e2029;
+  --surface-2: #262833;
+  --text: #ecedf3;
+  --muted: #9a9fb2;
+  --border: #2d303c;
+
+  --primary: #7f9cf7;
+  --primary-soft: #262f4f;
+  --primary-text: #0f1220;
+  --done: #4cc790;
+  --done-soft: #1b3329;
+  --todo: #7f9cf7;
+  --todo-soft: #232b47;
+  --warn: #f2a25a;
+  --warn-soft: #3a2a1a;
+  --danger: #f2686c;
+  --danger-soft: #3a1f22;
+  --accent-pink: #3d2633;
+
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+  background: var(--page-bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s;
+}
+
+#app {
+  min-height: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Shared button styles — used by several components, so they live here instead of being copy-pasted. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-text);
+}
+.btn-danger {
+  color: var(--danger);
+  border-color: transparent;
+  background: var(--danger-soft);
+}
+.btn-ghost {
+  border-color: transparent;
+  background: transparent;
+}
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+}
+.icon-btn:hover,
+.btn-ghost:hover {
+  background: var(--surface-2);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

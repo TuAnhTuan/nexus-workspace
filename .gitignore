@@ -1,0 +1,20 @@
+# OS
+.DS_Store
+
+# Editors
+.idea/
+.vscode/
+!frontend/.vscode/extensions.json
+
+# Claude Code — personal/local files
+.claude/settings.local.json
+.claude/logs/
+
+# Build output / deps (also covered by sub-project .gitignore files)
+node_modules/
+frontend/dist/
+backend/target/
+
+# Env files
+.env
+.env.*
